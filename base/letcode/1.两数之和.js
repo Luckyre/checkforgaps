@@ -28,6 +28,7 @@ var twoSum = function (nums, target) {
       return [nums[start], nums[end]]
     }
   }
+  return []
 }
 
 // @lc code=end
