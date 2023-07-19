@@ -2,7 +2,7 @@
  * @Author: XinAn
  * @Date: 2023-05-24 20:34:23
  * @LastEditors: lucklyrs
- * @LastEditTime: 2023-05-24 20:57:57
+ * @LastEditTime: 2023-07-19 11:11:04
  * @Description: file content
  * @FilePath: \checkforgaps\base\letcode\13.罗马数字转整数.js
  */
@@ -54,7 +54,7 @@ var romanToInt = function (s) {
   return ans
 }
 
-romanToInt('XLIXC')
+romanToInt('XLIC')
 
 // XL 40  IX:NULL I:1 XLI:41  XC:90  41+90 = 131
 // @lc code=end
