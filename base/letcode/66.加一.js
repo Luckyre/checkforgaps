@@ -16,14 +16,13 @@ var plusOne = function (digits) {
     // i=3  i=2  i=1 i=0
     digits[i]++ // digit[3]+1 = 0  digit[2] +1 0  digit[1]+1 = 0  digit[0] + 1 =2
     digits[i] %= 10 // 2 0 0 0
-    if (digits[i] != 0) {
+    if (digits[i] != 0)
       // digit[0]
       //若无进位
       return digits //2000
-    }
-    digits = [...Array(len + 1)].map((_) => 0) //处理末位有进位，导致最前方需要进一位 [99]
-    digits[0] = 1
-    return digits
   }
+  digits = [...Array(len + 1)].map((_) => 0) //处理末位有进位，导致最前方需要进一位 [99]
+  digits[0] = 1
+  return digits
 }
 // @lc code=end
