@@ -1,0 +1,34 @@
+/*
+ * @lc app=leetcode.cn id=83 lang=javascript
+ *
+ * [83] 删除排序链表中的重复元素
+ */
+
+// @lc code=start
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var deleteDuplicates = function (head) {
+  /*
+  思路 -链表
+  通过指定的 cur.val 和 cur.next.val 相等时说明需要去重
+*/
+  let cur = head
+  while (cur && cur.next) {
+    if (cur.val == cur.next.val) {
+      cur.next = cur.next.next
+    } else {
+      cur = cur.next
+    }
+  }
+  return head
+}
+// @lc code=end
