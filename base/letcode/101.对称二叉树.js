@@ -102,4 +102,5 @@ var isSymmetric = function (root) {
   }
   return true
 }
+
 // @lc code=end
