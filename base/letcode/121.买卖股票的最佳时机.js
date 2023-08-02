@@ -10,6 +10,7 @@
  * @return {number}
  */
 var maxProfit = function (prices) {
+  // 取最左边最小值，取最右边最大值，然后等到的差值就是最大利润
   // [7,1,5,3,6,4]
   if (prices.length === 0) return 0
 
