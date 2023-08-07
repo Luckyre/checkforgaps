@@ -22,7 +22,8 @@ var hasCycle = function (head) {
   // 通过双指针，快慢指针在终点前相遇时，为环形
   let slow = head, //3
     fast = head //3
-  while (slow !== null && fast !== null) {
+  // 快指针走到末尾时停止
+  while (fast !== null && fast.next !== null) {
     slow = slow.next //走一步 //
     fast = fast.next.next //走两步
     if (slow === fast) {
