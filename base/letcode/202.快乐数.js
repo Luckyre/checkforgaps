@@ -12,6 +12,7 @@
 var isHappy = function (n) {
   // 通过创建快慢指针，然后快指针走两步，慢指针走一步，
   //1、若两者相遇，则是环遇
+
   let getNext = function (n) {
     return n
       .toString()
