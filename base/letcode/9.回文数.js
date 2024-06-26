@@ -2,9 +2,9 @@
  * @Author: XinAn
  * @Date: 2023-05-23 08:43:07
  * @LastEditors: lucklyrs
- * @LastEditTime: 2023-07-19 11:19:26
+ * @LastEditTime: 2024-05-27 16:23:06
  * @Description: file content
- * @FilePath: \checkforgaps\base\letcode\9.回文数.js
+ * @FilePath: \letcode\9.回文数.js
  */
 /*
  * @lc app=leetcode.cn id=9 lang=javascript
