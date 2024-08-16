@@ -50,14 +50,27 @@
  * @param {number[]} nums
  * @return {boolean}
  */
+// var containsDuplicate = function (nums) {
+//   //先做排序 然后在遍历比对
+//   nums.sort((a, b) => a - b)
+//   const numsList = nums.length
+//   for (let i = 0; i < numsList - 1; i++) {
+//     if (nums[i] === nums[i + 1]) {
+//       return true
+//     }
+//   }
+//   return false
+// }
+
+// 通过哈希表 将一个元素插入哈希表时，若存在时则判断重复
+
 var containsDuplicate = function (nums) {
-  //先做排序 然后在遍历比对
-  nums.sort((a, b) => a - b)
-  const numsList = nums.length
-  for (let i = 0; i < numsList - 1; i++) {
-    if (nums[i] === nums[i + 1]) {
+  const set = new Set()
+  for (const x of nums) {
+    if (set.has(x)) {
       return true
     }
+    set.add(x)
   }
   return false
 }
