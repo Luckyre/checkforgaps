@@ -92,23 +92,55 @@
 //   return getNodeSum(root) //递归节点
 // }
 
+// var countNodes = function (root) {
+//   //[1,2,3,4,5,6]
+//   //迭代（层级遍历）
+//   let queue = []
+//   if (root === null) {
+//     return 0
+//   }
+//   queue.push(root) // [1,2,3,4,5,6]
+//   let nodeNum = 0
+//   while (queue.length) {
+//     //6
+//     let length = queue.length
+//     while (length--) {
+//       //5
+//       let node = queue.shift() //删除第一个元素  // [1]
+//       nodeNum++ // 1
+//       node.left && queue.push(node.left) //
+//       node.right && queue.push(node.right)
+//     }
+//   }
+//   return nodeNum
+// }
+
+//
 var countNodes = function (root) {
-  //迭代（层级遍历）
-  let queue = []
+  //[1,2,3,4,5,6]
+  //利用完全二叉树性质
   if (root === null) {
     return 0
   }
-  queue.push(root)
-  let nodeNum = 0
-  while (queue.length) {
-    let length = queue.length
-    while (length--) {
-      let node = queue.shift() //删除第一个元素
-      nodeNum++
-      node.left && queue.push(node.left)
-      node.right && queue.push(node.right)
-    }
+  let leftNode = root.left
+  let rightNode = root.right
+
+  let leftDepth = 0
+  let rightDepth = 0
+  while (leftNode) {
+    leftNode = leftNode.left
+    leftDepth++
   }
-  return nodeNum
+  while (rightNode) {
+    rightNode = rightNode.right
+    rightDepth++
+  }
+  if (leftDepth === rightDepth) {
+    //如果左节点得深度与右节点的深度一样
+    return Math.pow(2, leftDepth + 1) - 1 // 2^(d+1) - 1
+  }
+
+  // 左右节点得深度不一致时
+  return countNodes(root.left) + countNodes(root.right) + 1
 }
 // @lc code=end
