@@ -72,23 +72,43 @@
  * @return {number}
  */
 
+// var countNodes = function (root) {
+//   // [1,2,3,4,5,6]
+//   //递归版本
+//   //递归算法计算二叉树节点数
+
+//   // 1,确认递归函数参数
+//   const getNodeSum = function (node) {
+//     //2,确认终止条件
+//     if (node === null) {
+//       return 0
+//     }
+
+//     //3,确认单层递归逻辑
+//     let leftNum = getNodeSum(node.left)
+//     let rightNum = getNodeSum(node.right)
+//     return leftNum + rightNum + 1 // 返回总的左边节点数+右边节点数+根节点数
+//   }
+//   return getNodeSum(root) //递归节点
+// }
+
 var countNodes = function (root) {
-  // [1,2,3,4,5,6]
-  //递归版本
-  //递归算法计算二叉树节点数
-
-  // 1,确认递归函数参数
-  const getNodeSum = function (node) {
-    //2,确认终止条件
-    if (node === null) {
-      return 0
-    }
-
-    //3,确认单层递归逻辑
-    let leftNum = getNodeSum(node.left)
-    let rightNum = getNodeSum(node.right)
-    return leftNum + rightNum + 1 // 返回总的左边节点数+右边节点数+根节点数
+  //迭代（层级遍历）
+  let queue = []
+  if (root === null) {
+    return 0
   }
-  return getNodeSum(root) //递归节点
+  queue.push(root)
+  let nodeNum = 0
+  while (queue.length) {
+    let length = queue.length
+    while (length--) {
+      let node = queue.shift() //删除第一个元素
+      nodeNum++
+      node.left && queue.push(node.left)
+      node.right && queue.push(node.right)
+    }
+  }
+  return nodeNum
 }
 // @lc code=end
