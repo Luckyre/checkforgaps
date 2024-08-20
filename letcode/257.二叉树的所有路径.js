@@ -83,4 +83,34 @@ var binaryTreePaths = function (root) {
   construct_paths(root, '')
   return paths
 }
+
+var binaryTreePaths = function (root) {
+  //[1,2,3,null,5]
+  // 广度优先搜索
+  const paths = []
+  if (root === null) {
+    return paths
+  }
+  const node_queue = [root] //[1]
+
+  const path_queue = [root.val.toString()] //1 //1->2
+  while (node_queue.length) {
+    const node = node_queue.shift() //1 //2
+    const path = path_queue.shift() //1 //1->2
+
+    if (node.left === null && node.right === null) {
+      paths.push(path) //
+    } else {
+      if (node.left !== null) {
+        node_queue.push(node.left)
+        path_queue.push(path + '->' + node.left.val.toString()) //1->2 //1->2->5
+      }
+      if (node.right !== null) {
+        node_queue.push(node.right)
+        path_queue.push(path + '->' + node.right.val.toString()) //1->3 //
+      }
+    }
+  }
+  return paths
+}
 // @lc code=end
