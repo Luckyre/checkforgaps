@@ -72,4 +72,58 @@ var isPalindrome = function (head) {
   }
   return true
 }
+
+//2、递归不会
+
+//方法三  快慢指针
+// 1.找到前半部分链表的尾节点
+//2. 反转后半部分链表
+//3,比较两部分链表
+//4,恢复链表
+//5,返回结果
+const reverseList = (head) => {
+  let prev = null
+  let curr = head
+  while (curr !== null) {
+    let nextTemp = curr.next
+    curr.next = prev
+    prev = curr
+    curr = nextTemp
+  }
+  return prev // 反转后链表的头节点
+}
+
+const endOfFirstHalf = (head) => {
+  let fast = head
+  let slow = head
+  while (fast.next !== null && fast.next.next !== null) {
+    fast = fast.next.next // 快指针走两步
+    slow = slow.next
+  }
+  return slow
+}
+
+var isPalindrome = function (head) {
+  if (head === null) return true
+  // 找到前半部分链表的尾节点并且反转后半部分链表
+  let firstHalfEnd = endOfFirstHalf(head) //前半部分链表的尾节点
+  let secondHalfStart = reverseList(firstHalfEnd.next) //后半部分链表的头节点
+
+  // 比较两部分链表
+  let p1 = head
+  let p2 = secondHalfStart
+  let result = true
+  while (result && p2 != null) {
+    // 注意这里是p2!= null
+    // 比较对应节点的值
+
+    if (p1.val != p2.val) result = false //
+    p1 = p1.next
+    p2 = p2.next
+  }
+
+  firstHalfEnd.next = reverseList(secondHalfStart)
+  return result
+}
+
 // @lc code=end
