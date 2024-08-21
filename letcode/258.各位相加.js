@@ -59,11 +59,24 @@ var addDigits = function (num) {
   while (num >= 10) {
     let sum = 0
     while (num > 0) {
-      sum += num % 10 // 8+8 //8+8+3
-      num = Math.floor(num / 10) // 38 //3 //0
+      //388 //19 1
+
+      sum += num % 10 //sum=8; sum=8+8=16; sum=16+3=19   sum=9 sum= 10
+
+      num = Math.floor(num / 10) //num=38 num=3  num=1
     }
-    num = sum //16
+    num = sum //num=19 num= 10
   }
   return num
+}
+addDigits(388)
+// 不太理解
+var addDigits = function (num) {
+  //38
+  if (num === 0) {
+    return 0
+  } else {
+    return num % 9 == 0 ? 9 : num % 9
+  }
 }
 // @lc code=end
