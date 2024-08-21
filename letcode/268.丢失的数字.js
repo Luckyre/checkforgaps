@@ -107,4 +107,33 @@ var missingNumber = function (nums) {
     }
   }
 }
+
+// 解法三 异或运算 不太理解 x^x=0 和 x^0=x
+var missingNumber = function (nums) {
+  //[3,2,0]
+  let xor = 0
+  for (let i = 0; i < nums.length; i++) {
+    //0^3=3  3^2=1  1^0=1
+
+    xor = xor ^ nums[i]
+  }
+  for (let i = 0; i <= nums.length; i++) {
+    // 1^1=0  0^2=2  2^3=1
+
+    xor = xor ^ i
+  }
+  return xor //1
+}
+
+//  解法四：高斯求和公式
+
+var missingNumber = function (nums) {
+  const n = nums.length
+  let total = Math.floor((n * (n + 1)) / 2)
+  let arrSum = 0
+  for (let i = 0; i < n; i++) {
+    arrSum += nums[i]
+  }
+  return total - arrSum
+}
 // @lc code=end
