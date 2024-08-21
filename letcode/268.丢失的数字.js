@@ -92,7 +92,19 @@ var missingNumber = function (nums) {
     }
   }
   return nums.length
+}
 
-  // 解法二： 哈希表
+// 解法二： 哈希集合
+var missingNumber = function (nums) {
+  //先把集合放入哈希表集合
+  const set = new Set()
+  for (let i = 0; i < nums.length; i++) {
+    set.add(nums[i])
+  }
+  for (let i = 0; i <= nums.length; i++) {
+    if (!set.has(i)) {
+      return i
+    }
+  }
 }
 // @lc code=end
