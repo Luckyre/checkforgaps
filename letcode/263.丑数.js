@@ -69,5 +69,7 @@ var isUgly = function (n) {
     }
   }
   return n === 1
+
+  //当 n 一直整除 2,3,5时，最后剩下为1时则是丑数
 }
 // @lc code=end
