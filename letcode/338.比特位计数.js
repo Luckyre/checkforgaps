@@ -85,4 +85,21 @@ var countBits = function (n) {
   // 2. 然后，我们从 1 开始遍历到 n，对于每个整数 i，我们将其转换为二进制表示，并统计其中 1 的个数。
   // 3. 最后，我们返回 res 数组。
 }
+
+var countBits2 = function (n) {
+  //n=7   0 1 10 11 100 101 110 111 1110 1111 [0,1,1,2,1,2,2,3,3]
+  //解法2
+  const res = new Array(n + 1)
+  res[0] = 0
+  for (let i = 1; i <= n; i++) {
+    //i=7
+    if (i % 2 === 1) {
+      //
+      res[i] = res[i - 1] + 1
+    } else {
+      res[i] = res[i / 2] // 偶数右移一位 相当于抹去0 1的个数不变
+    }
+  }
+  return res
+}
 // @lc code=end
