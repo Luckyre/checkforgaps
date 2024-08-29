@@ -58,4 +58,18 @@ var isPerfectSquare = function (num) {
   return x * x === num
 }
 
+var isPerfectSquare2 = function (num) {
+  // 方法二 暴力执行遍历，如果从1开始一直遍历到平方根等于num
+  let x = 1,
+    square = 1
+  while (square <= num) {
+    if (square === num) {
+      return true
+    }
+    x++
+    square = x * x
+  }
+  return false
+}
+
 // @lc code=end
