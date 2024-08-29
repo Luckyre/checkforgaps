@@ -72,4 +72,24 @@ var isPerfectSquare2 = function (num) {
   return false
 }
 
+var isPerfectSquare3 = function (num) {
+  //16
+  // 方法三 二分查找，通过从[1,num]范围去查找
+  let left = 0,
+    right = num //16
+  while (left <= right) {
+    let mid = Math.floor((right - left) / 2) + left // 求中间节点 //8 //3 //4
+    const square = mid * mid // 8*8=64 3*3=9 4*4=16
+
+    if (square === num) {
+      return true
+    } else if (square < num) {
+      left = mid + 1 //4
+    } else {
+      right = mid - 1 //7
+    }
+  }
+  return false
+}
+
 // @lc code=end
