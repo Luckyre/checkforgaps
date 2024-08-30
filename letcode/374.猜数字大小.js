@@ -95,4 +95,22 @@ var guessNumber = function (n) {
   }
   return right
 }
+
+var guessNumber2 = function (n) {
+  //
+  let left = 1,
+    right = n
+  while (left < right) {
+    const mid = Math.floor(left + (right - left) / 2)
+    if (guess(mid) === 1) {
+      left = mid + 1
+    } else if (guess(mid) === -1) {
+      right = mid - 1 //当目标值小于mid时，答案就在[left,mid-1]区间中
+    } else if (guess(mid) === 0) {
+      left = mid //当找到pick 值时 直接跳出循环
+      break
+    }
+  }
+  return left
+}
 // @lc code=end
