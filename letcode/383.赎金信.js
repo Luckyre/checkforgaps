@@ -64,11 +64,11 @@ var canConstruct = function (ransomNote, magazine) {
   // ransomNote 字符在 magazine中都能找到
   if (ransomNote.length > magazine.length) return false
   const cnt = new Array(26).fill(0) //
-  for (const c of magazine) {
+  for (let c of magazine) {
     //a
     cnt[c.charCodeAt() - 'a'.charCodeAt()]++ //cnt[0]++
   }
-  for (const c of ransomNote) {
+  for (let c of ransomNote) {
     cnt[c.charCodeAt() - 'a'.charCodeAt()]-- //通过26个字母去
     if (cnt[c.charCodeAt() - 'a'.charCodeAt()] < 0) {
       return false
