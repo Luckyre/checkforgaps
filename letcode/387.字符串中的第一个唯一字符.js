@@ -55,7 +55,7 @@
  * @return {number}
  */
 var firstUniqChar = function (s) {
-  // 哈希表
+  // 哈希表 使用哈希表存储频数
   //通过遍历字符串，赋值给哈希表，key为字符，value为出现的次数
   //遍历字符串，判断哈希表中key对应的value是否为1，如果是，返回索引
 
@@ -67,6 +67,28 @@ var firstUniqChar = function (s) {
   for (let i = 0; i < s.length; i++) {
     if (map.get(s[i]) === 1) {
       return i
+    }
+  }
+  return -1
+}
+
+var firstUniqChar2 = function (s) {
+  // hello
+  //方法二 使用哈希表存执索引
+  const map = new Map()
+  const sLength = s.length
+  for (let [i, ch] of Array.from(s).entries()) {
+    if (!map.has(ch)) {
+      map.set(ch, i)
+    } else {
+      map.set(ch, -1) // 重复字符串
+    }
+  }
+  // map = {h:0,e:1,l:-1,0:4}
+  // 遍历map，找到第一个value为正的key
+  for (let value of map.values()) {
+    if (value > -1) {
+      return value
     }
   }
   return -1
