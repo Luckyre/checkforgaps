@@ -69,4 +69,20 @@ var findTheDifference = function (s, t) {
   }
   return ''
 }
+
+var findTheDifference = function (s, t) {
+  //求和  通过计算s与t的charCodeAt()值求和,然后比较两者得差值，
+  //在转化通过fromCharCodeAt()转化为字符
+  // 16
+
+  let s1 = 0,
+    s2 = 0
+  for (const ch of s) {
+    s1 += ch.charCodeAt()
+  }
+  for (const ch of t) {
+    s2 += ch.charCodeAt()
+  }
+  return String.fromCharCode(s2 - s1)
+}
 // @lc code=end
