@@ -61,18 +61,18 @@ var arrangeCoins = function (n) {
   // total= k*(k+1)/2
   //二分法查找
   let left = 1,
-    right = n //13
+    right = n //13     //
   while (left < right) {
+    //
     const mid = Math.floor((right - left + 1) / 2) + left //7  4
     if (mid * (mid + 1) <= 2 * n) {
-      //7*8<=2*13 // 4*5<=2*13
       left = mid //7
       //&& 7*8<=2*13   //4
     } else {
-      right = mid - 1 //6
+      right = mid - 1 //6  //2
     }
-    return left // 4
   }
+  return left // 4
 }
 
 // @lc code=end
