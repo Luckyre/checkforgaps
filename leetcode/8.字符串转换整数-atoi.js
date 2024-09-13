@@ -151,4 +151,76 @@ var myAtoi = function (s) {
     return number
   }
 }
+
+var myAtoi2 = function (str) {
+  // 还得多理解
+
+  //'-41CXAEDA'
+  // 方法二 自动机
+  // 自动机的定义 有限状态机
+  // 执行阶段，自动机处于开始状态start。
+  // 最初，自动机处于开始状态start。
+  // 遇到空格之后，自动机仍处于开始状态start。
+  // 遇到符号之后，自动机进入符号状态sign，后续根据符号决定状态。
+  // 遇到数字字符之后，自动机进入数值状态number，后续根据数值的大小决定返回值。
+  // 遇到其他字符之后，自动机进入结束状态end。
+
+  class Automaton {
+    constructor() {
+      this.state = 'start'
+      this.sign = 1
+      this.answer = 0
+      this.map = new Map([
+        ['start', ['start', 'sign', 'number', 'end']],
+        ['sign', ['end', 'end', 'number', 'end']],
+        ['number', ['end', 'end', 'number', 'end']],
+        ['end', ['end', 'end', 'end', 'end']],
+      ])
+    }
+
+    getIndex(char) {
+      //获取状态索引
+      if (char === '') {
+        return 0
+      } else if (char === '+' || char === '-') {
+        return 1
+      } else if (typeof Number(char) === 'number' && !isNaN(char)) {
+        return 2
+      } else {
+        return 3
+      }
+    }
+    get(char) {
+      // char ='-'
+      //char = '4'
+      //char = '1'
+      //char = 'C'
+      this.state = this.map.get(this.state)[this.getIndex(char)]
+      // this.map.get('start')[1] = 'sign'
+      // this.map.get('sign')[2] = 'number'
+      // this.map.get('number')[2] = 'number'
+      // this.map.get('number')[3] = 'end'
+      if (this.state === 'number') {
+        this.answer = this.answer * 10 + (char - 0) //0*10+(4-0) = 4  //4*10+(1-0) = 41  char - 0 是将字符转换为数字
+        this.answer =
+          this.sign === 1
+            ? Math.min(this.answer, Math.pow(2, 31) - 1)
+            : Math.min(this.answer, -Math.pow(-2, 31))
+      } else if (this.state === 'sign') {
+        this.sign = char === '+' ? 1 : -1 //-1
+      }
+    }
+  }
+
+  const automaton = new Automaton()
+  for (let char of str) {
+    //优化 遇到 this.state === 'end' 就跳出循环  因为后面的字符都不是数字了
+    if (automaton.state === 'end') {
+      break
+    }
+    automaton.get(char)
+    //str = '-41CXAEDA'
+  }
+  return automaton.sign * automaton.answer
+}
 // @lc code=end
