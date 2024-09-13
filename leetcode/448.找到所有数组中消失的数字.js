@@ -77,4 +77,29 @@ var findDisappearedNumbers = function (nums) {
   }
   return result
 }
+
+var findDisappearedNumbers = function (nums) {
+  //方法二：数组的原地操作  空间复杂度：O(1)
+  // 思路：遍历数组，将数组中的值作为索引，将对应索引的值改为负数，
+  //最后遍历数组，值为正数的索引就是缺失的数字
+  // [4,3,2,7,8,2,3,1]
+  let numsLength = nums.length //8
+  for (let i = 0; i < numsLength; i++) {
+    let newIndex = Math.abs(nums[i]) - 1 //3 2
+
+    if (nums[newIndex] > 0) {
+      // nums[3] =7 >0  nums[2] =2 >0
+      nums[newIndex] *= -1
+    }
+  }
+  ////[-4,-3,-2,-7,8,2,-3,-1]
+
+  let result = []
+  for (let i = 1; i <= numsLength; i++) {
+    if (nums[i - 1] > 0) {
+      result.push(i) //5,6
+    }
+  }
+  return result
+}
 // @lc code=end
