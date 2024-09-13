@@ -90,4 +90,10 @@ var repeatedSubstringPattern = function (s) {
   return false
 }
 
+var repeatedSubstringPattern2 = function (s) {
+  //方法二 字符串匹配
+  // 字符串s+s 去掉首尾字符 得到的字符中是否包含s
+  return (s + s).slice(1, -1).includes(s)
+}
+
 // @lc code=end
