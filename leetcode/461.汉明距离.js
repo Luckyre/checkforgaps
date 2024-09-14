@@ -96,4 +96,24 @@ var hammingDistance2 = function (x, y) {
   }
 }
 
+var hammingDistance3 = function (x, y) {
+  //方法三 Brian Kernighan 算法
+  //位运算：对整数x执行x &= (x - 1)操作。这个操作会将x的二进制表示中最右边的1变成0
+  // 1 & 1 = 1  1 & 0 = 0    0 & 1 = 0  0 & 0 = 0
+  //5 & 4 =4   4 & 3 = 0
+
+  // 1010  10
+  // 1001  9
+
+  // 1010  10
+  // 1010 & 1001 = 1000  1000 & 0111 = 0000
+  let count = 0
+  let s = x ^ y
+  while (s !== 0) {
+    s = s & (s - 1) // 0101 & 0100 = 0100
+    // 1010 & 1001 = 1000  1000 & 0111 = 0000
+
+    count++
+  }
+}
 // @lc code=end
