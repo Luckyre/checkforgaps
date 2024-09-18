@@ -63,10 +63,11 @@ var findMaxConsecutiveOnes = function (nums) {
       max = Math.max(max, count)
       count = 0
     }
-    if (i === nums.length - 1) {
-      max = Math.max(max, count)
-    }
+    // if (i === nums.length - 1) {
+    //   max = Math.max(max, count)
+    // }
   }
+  max = Math.max(max, count) // 跳出循环时,重新把最后一次的count和max比较一次
   return max
 }
 // @lc code=end
