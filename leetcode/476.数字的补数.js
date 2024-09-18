@@ -72,6 +72,10 @@ var findComplement = function (num) {
       break
     }
   }
+  // 0x7fffffff 是 32 位二进制数的最大值
+  // (1 << (height + 1)) - 1 是 31 位二进制数的最大值
+  // << 是左移运算符，将 1 左移 height + 1 位，得到一个 height + 1 位的二进制数，最高位为 1，其余位为 0
+  // - 1 是将最高位的 1 变成 0，其余位不变，得到一个 height 位的二进制数，最高位为 0，其余位为 1
   let mask = height == 30 ? 0x7fffffff : (1 << (height + 1)) - 1 //11
   return num ^ mask // 101 ^ 11 => 010
 }
