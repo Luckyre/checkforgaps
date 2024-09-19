@@ -68,7 +68,7 @@
  * @return {number[]}
  */
 var nextGreaterElement = function (nums1, nums2) {
-  // 方法一 暴力解法
+  // 方法一  双循环 暴力解法
   let res = []
   for (let i = 0; i < nums1.length; i++) {
     //把nums1中的元素 在nums 中查询 ，找到位置
@@ -85,5 +85,29 @@ var nextGreaterElement = function (nums1, nums2) {
     }
   }
   return res
+}
+
+var nextGreaterElement2 = function (nums1, nums2) {
+  //nums1 = [4,1,2], nums2 = [1,3,4,2]
+  // 方法二 单调栈
+  // 1，创建一个栈，遍历nums2
+  // 2，栈为空，入栈，
+  // 3，栈不为空，判断栈顶元素是否小于当前元素，如果小于，栈顶元素的下一个更大元素就是当前元素，出栈，继续判断栈顶元素是否小于当前元素，直到栈为空或者栈顶元素大于当前元素，入栈
+  // 4，遍历完nums2，栈中剩余的元素的下一个更大元素都是-1
+  // 5，遍历nums1，查询nums2中每个元素的下一个更大元素，返回结果
+  let stack = []
+  let map = new Map()
+  for (let i = nums2.length - 1; i >= 0; i--) {
+    // i=3, nums2[3]=2; i=2, nums2[2]=4; i=1, nums2[1]=3; num2[0]=1
+    while (stack.length && stack[stack.length - 1] < nums2[i]) {
+      //2<4 4>3 1<3
+      stack.pop() //[]
+    }
+    // {2:-1}; {2:-1,4:-1} {2::-1,4:-1,3:4,1:3}
+    // stack[stack.length - 1] 栈顶
+    map.set(nums2[i], stack.length ? stack[stack.length - 1] : -1)
+    stack.push(nums2[i]) //[2],[4,3], [4,3,1]
+  }
+  return nums1.map((item) => map.get(item))
 }
 // @lc code=end
