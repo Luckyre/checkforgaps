@@ -86,4 +86,33 @@ var findWords = function (words) {
   }
   return res
 }
+
+var findWords2 = function (words) {
+  // * 第一行由字符 "qwertyuiop" 组成。
+  // * 第二行由字符 "asdfghjkl" 组成。
+  // * 第三行由字符 "zxcvbnm" 组成。
+  //  ["Hello","Alaska","Dad","Peace"]
+  // 方法二，遍历
+  // 预处理计算出每个字符对应的行号。
+  //遍历字符串时，统一将大写字母转化为小写字母方便计算
+  const list = []
+  const rowIdx = '12210111011122000010020202' // 预处理26个字符对应的行号
+  for (const word of words) {
+    // 'Hello', 'Alaska', 'Dad', 'Peace'
+    let isValid = true
+    const idx = rowIdx[word[0].charCodeAt() - 'a'.charCodeAt()] // 得到第一个字符对应的行号
+    for (let i = 1; i < word.length; ++i) {
+      if (rowIdx[word[i].charCodeAt() - 'a'.charCodeAt()] !== idx) {
+        //遍历word中的其他字符，是否都与第一个字符在同一行
+        // 如果不在同一行，那么就不是一个单词
+        isValid = false
+        break
+      }
+    }
+    if (isValid) {
+      list.push(word)
+    }
+  }
+  return list
+}
 // @lc code=end
