@@ -50,7 +50,7 @@
  * @return {boolean}
  */
 var checkPerfectNumber = function (num) {
-  // 28
+  // 28 方法一:枚举
   if (num === 1) return false
   let sum = 1
   for (let i = 2; i <= num / 2; i++) {
@@ -66,5 +66,12 @@ var checkPerfectNumber = function (num) {
     }
   }
   return sum === num // 28===28  true
+}
+
+var checkPerfectNumber2 = function (num) {
+  //方法二 数学 在1 <= num <= 10^8范围中，偶完全数有
+  return (
+    num === 6 || num === 28 || num === 496 || num === 8128 || num === 33550336
+  )
 }
 // @lc code=end
