@@ -59,6 +59,7 @@
  * @return {string[]}
  */
 var letterCombinations = function (digits) {
+  //回溯
   if (digits.length === 0) {
     // 输入：digits = ""
     // * 输出：[]
