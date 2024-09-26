@@ -83,6 +83,7 @@ var letterCombinations = function (digits) {
   const res = []
   // 3, 定义一个函数，递归遍历
   const dfs = (curStr, i) => {
+    //DFS 深度优先
     //'' ,0
     if (i === digits.length) {
       //0 === 2
