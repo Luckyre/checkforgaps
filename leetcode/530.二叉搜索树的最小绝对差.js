@@ -79,8 +79,8 @@ var getMinimumDifference = function (root) {
     if (root === null) return
     dfs(root.left) // dfs(2)
     if (pre !== null) {
-      // root = 2, pre= 4
-      min = Math.min(min, Math.abs(root.val - pre.val)) //min=4-2 =2,
+      min = Math.min(min, root.val - pre.val)
+      // root = 2, pre= 4 //min=4-2 =2,
     }
     pre = root //pre =
     dfs(root.right)
@@ -88,4 +88,5 @@ var getMinimumDifference = function (root) {
   dfs(root) // [4,2,6,1,3]
   return min
 }
+
 // @lc code=end
