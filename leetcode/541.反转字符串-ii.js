@@ -109,7 +109,7 @@ var reverseStr2 = function (s, k) {
   const arr = Array.from(s) //["a","b","c","d","e","f","g","d","a","b","c"]
   //遍历大于2k个字符的情况
   for (let i = 0; i < n; i += 2 * k) {
-    reverse(arr, i, Math.min(i + k, n) - 1)
+    reverse(arr, i, Math.min(i + k, n) - 1) 
     // i=0 reverse(arr,0,1)
     // i=4, reverse(arr,4,5)
     // i=8, reverse(arr,8,10)
