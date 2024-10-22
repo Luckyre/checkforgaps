@@ -32,12 +32,13 @@ var checkRecord = function (s) {
       if (L >= 3) {
         return false
       }
-    } else if (s[i] === 'P') {
+    } else {
       L = 0
     }
   }
   return true
 }
+
 // @lc code=end
 
 /*
@@ -50,3 +51,7 @@ var checkRecord = function (s) {
 // @lcpr case=end
 
  */
+var checkRecord2 = function (s) {
+  // 正则
+  return !/A.*A|LLL/.test(s)
+}
